@@ -65,7 +65,7 @@ docker run -d \
   --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v portainer_data:/data \
-  portainer/portainer &>/dev/null
+  portainer/portainer-ce &>/dev/null
 
 # Install Watchtower
 msg "Installing Watchtower..."
@@ -73,6 +73,8 @@ docker run -d \
   --name watchtower \
   -v /var/run/docker.sock:/var/run/docker.sock \
   containrrr/watchtower \
+  --schedule "0 0 3 * * *" \
+  --debug \
   --cleanup \
   --label-enable &>/dev/null
 
